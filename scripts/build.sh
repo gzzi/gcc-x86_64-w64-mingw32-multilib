@@ -218,12 +218,12 @@ build_toolchain() {
 	"x86_64-w64-mingw32")
 		BINUTILS_OPTIONS="$BASE_OPTIONS --enable-targets=x86_64-w64-mingw32,i686-w64-mingw32"
 		MINGW_CRT_OPTIONS="--with-sysroot=$SYSROOT/$2 --prefix=$PREFIX/$2 --host=$2 --enable-lib32"
-		GCC_OPTIONS="$BASE_OPTIONS --enable-checking=release --enable-shared --enable-languages=c,c++,fortran,lto,objc --enable-threads=posix"
+		GCC_OPTIONS="$BASE_OPTIONS --enable-checking=release --enable-shared --enable-languages=c,c++,fortran,lto,objc --enable-threads=posix --enable-cxx-flags=-fno-exceptions"
 		LIBC="mingw"
 		;;
 	"arm-none-eabi")
 		BINUTILS_OPTIONS="$BASE_OPTIONS --enable-initfini-array"
-		GCC_OPTIONS="$BASE_OPTIONS --enable-checking=release --disable-shared --enable-languages=c,c++,lto --with-newlib --disable-threads --disable-tls --with-multilib-list=aprofile,rmprofile"
+		GCC_OPTIONS="$BASE_OPTIONS --enable-checking=release --disable-shared --enable-languages=c,c++,lto --with-newlib --disable-threads --disable-tls --with-multilib-list=aprofile,rmprofile --enable-cxx-flags=-fno-exceptions"
 		LIBC="newlib"
 		;;
 	"riscv32-unknown-elf" | "moxie-elf" | "m68k-elf" | "arc-elf")
