@@ -5,7 +5,8 @@ source docker_build_helper.sh
 prepare_container
 
 BUILD="$(gcc -dumpmachine)"
-for TARGET in "x86_64-w64-mingw32" "arc-elf" "arm-none-eabi" "$BUILD"; do
+# for TARGET in "x86_64-w64-mingw32" "arc-elf" "arm-none-eabi" "$BUILD"; do
+for TARGET in "x86_64-w64-mingw32" "arm-none-eabi"; do
 	for HOST in "$(gcc -dumpmachine)" "x86_64-w64-mingw32"; do
 		if [ "$TARGET" == "$BUILD" ] && [ "$HOST" != "$TARGET" ]; then
 			echo "Skipping $HOST -> $TARGET"
