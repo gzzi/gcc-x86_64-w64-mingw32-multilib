@@ -1,0 +1,19 @@
+# (c) Copyright 2023, Sonova AG, CH-8712 Staefa
+# All rights reserved. Sonova's source code is an unpublished work
+# and the use of a copyright notice does not imply otherwise.
+# This source code contains confidential, trade secret material
+# of Sonova AG. Any attempt or participation in
+# deciphering, decoding, reverse engineering or in any way altering
+# the source code is strictly prohibited, unless the prior written
+# consent of Sonova AG is obtained.
+
+
+- !ShellCommand
+    name: 'Build GCC image'
+    command: './docker_build_sonova.sh'
+    haltOnFailure: True
+
+- !getCompressedDirectoryUploadStep
+    workersrc: 'r{release}'
+    masterdest: 'r{helios_gcc/%(prop:UID)s}'
+    extract: False
