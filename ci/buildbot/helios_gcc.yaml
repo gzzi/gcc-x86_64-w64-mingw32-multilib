@@ -17,3 +17,14 @@
     workersrc: 'r{release}'
     masterdest: 'r{helios_gcc/%(prop:UID)s}'
     extract: False
+
+- !ShellCommand
+    name: 'Stop docker and cleanup'
+    command: 'docker rm -f gcc_multilib || true && docker system prune -f -a'
+    alwaysRun: True
+
+- !ShellCommand
+    name: 'Remove build dir'
+    command: 'rm -rf build'
+    workdir: '.'
+    alwaysRun: True
