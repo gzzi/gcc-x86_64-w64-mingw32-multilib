@@ -5,7 +5,7 @@ if [ ! -e gcc-base ]; then
 fi
 source gcc-base/docker_build_helper.sh
 
-prepare_container jammy
+prepare_container noble
 
 BUILD="$(gcc -dumpmachine)"
 for TARGET in "x86_64-w64-mingw32" "arc-elf" "arm-none-eabi" "$BUILD"; do
